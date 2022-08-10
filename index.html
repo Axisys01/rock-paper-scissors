@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+		let score = 0
+		let escore = 0
+		function game() {
+			for (let i = 0; i < 5; i++) {
+				function playRound(playerSelection, computerSelection) {
+					if (playerSelection === computerSelection.toLowerCase()) {
+						console.log("It's a tie!")
+					} else if (playerSelection === "scissor" && computerSelection === "Paper"){
+						score = ++score
+						console.log(`You won!, now you have ${score}`)
+					} else if (playerSelection === "scissor" && computerSelection === "Rock"){
+						escore = ++escore
+						console.log(`You lost!, enemy has ${escore}`)
+					} else if (playerSelection === "paper" && computerSelection === "Rock"){
+						score = ++score
+						console.log(`You won!, now you have ${score}`)
+					} else if (playerSelection === "paper" && computerSelection === "Scissor"){
+						score = ++escore
+						console.log(`You lost!, enemy has ${escore}`)
+					} else if (playerSelection === "rock" && computerSelection === "Scissor"){
+						score = ++score
+						console.log(`You won!, now you have ${score}`)
+					} else if (playerSelection === "rock" && computerSelection === "Paper"){
+						score = ++escore
+						console.log(`You lost!, enemy  ${escore}`)
+					}
+				}
+				const ex = prompt("Please enter a move, (Rock, Paper, Scissor)");
+				const PlayerSelection = ex.toLowerCase();
+				const ComputerSelection = getComputerChoice();
+				console.log(ComputerSelection);
+				playRound(PlayerSelection, ComputerSelection);
+			}
+		}
+
+		function getComputerChoice() {
+			let num = Math.floor((Math.random() * 3) + 1);
+			switch(num) {
+				case 1:
+					return "Rock";
+				case 2:
+					return "Paper";
+				case 3:
+					return "Scissor";
+			}
+		}
+		game(); 
+		if (score > escore) {
+			console.log('Congrats! You won!');
+		} else if (escore > score) {
+			console.log('Oh no!, You Lost!');
+		} else {
+			console.log('Draw!')
+		}
+
+    </script>    
+</body>
+</html>
